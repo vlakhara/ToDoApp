@@ -31,7 +31,7 @@ const Home = () => {
     priority: "Low",
     completed: false,
   });
-  const [_, __, removeCookies] = useCookies(["access_token"]);
+  const [cookies, __, removeCookies] = useCookies(["access_token"]);
   const handleLogOut = () => {
     removeCookies(["access_token"]);
     window.localStorage.removeItem("userId", "");
@@ -74,7 +74,9 @@ const Home = () => {
       open: false,
     });
   };
-
+  if (!cookies["access_token"]) {
+    navigate("/login");
+  }
   return (
     <CommonContainer
       maxWidth="xl"
