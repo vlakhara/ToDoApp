@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import CommonContainer from "../common/CommonContainer";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -74,8 +74,8 @@ const Home = () => {
       open: false,
     });
   };
-  if (!cookies["access_token"]) {
-    navigate("/login");
+  if (!cookies["access_token"] || !localStorage.get("userId")) {
+    return <Navigate to="/login" />;
   }
   return (
     <CommonContainer
