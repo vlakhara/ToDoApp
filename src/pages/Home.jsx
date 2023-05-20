@@ -74,7 +74,7 @@ const Home = () => {
       open: false,
     });
   };
-  if (!cookies["access_token"] || !localStorage.get("userId")) {
+  if (!cookies["access_token"] || !window.localStorage.get("userId")) {
     return <Navigate to="/login" />;
   }
   return (
