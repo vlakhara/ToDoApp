@@ -34,7 +34,7 @@ const Home = () => {
   const [cookies, __, removeCookies] = useCookies(["access_token"]);
   const handleLogOut = () => {
     removeCookies(["access_token"]);
-    window.localStorage.removeItem("userId", "");
+    localStorage.removeItem("userId", "");
     navigate("/login");
   };
 
@@ -74,7 +74,7 @@ const Home = () => {
       open: false,
     });
   };
-  if (!cookies["access_token"] || !window.localStorage.get("userId")) {
+  if (!cookies["access_token"] || !localStorage.getItem("userId")) {
     return <Navigate to="/login" />;
   }
   return (
